@@ -4,12 +4,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivityFragment">
 
-    <ListView
+    <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/list_covers">
-
-    </ListView>
+        android:id="@+id/list_covers"
+        android:numColumns="3"
+        android:verticalSpacing="4dp"
+        android:drawSelectorOnTop="true"
+        >
+    </GridView>
 
 
 </FrameLayout>

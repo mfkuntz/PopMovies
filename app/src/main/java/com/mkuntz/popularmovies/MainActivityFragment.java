@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.mkuntz.popularmovies.dataaccess.Discover;
 import com.mkuntz.popularmovies.datamodel.Movie;
@@ -21,7 +24,7 @@ import java.util.ArrayList;
 public class MainActivityFragment extends Fragment {
 
     CoverAdapter mCoverAdapter;
-    ListView mListView;
+    GridView mListView;
 
     public MainActivityFragment() {
     }
@@ -35,10 +38,17 @@ public class MainActivityFragment extends Fragment {
 
         mCoverAdapter = new CoverAdapter(getActivity(), defaultMovies);
 
-        mListView = (ListView) v.findViewById(R.id.list_covers);
+        mListView = (GridView) v.findViewById(R.id.list_covers);
         mListView.setAdapter(mCoverAdapter);
 
-//        new DiscoverTask().doInBackground();
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Movie m = (Movie) parent.getItemAtPosition(position);
+
+                Toast.makeText(getActivity(), m.getName(), Toast.LENGTH_LONG).show();
+            }
+        });
 
         loadData();
 

@@ -32,15 +32,14 @@ public class Discover {
 
                     JSONArray resultArray = jsonRoot.getJSONArray("results");
 
-                    for (int i = 0; i < 5; i++) {
-
-                        Movie movie = new Movie();
+                    for (int i = 0; i < 12; i++) {
 
                         JSONObject jsonObject = (JSONObject) resultArray.get(i);
 
-                        movie.setCoverUrl(
-                                jsonObject.getString(Movie.COVER_API)
-                        );
+                        Movie movie = new Movie.Builder(jsonObject.getInt(Movie.ID_API))
+                                .coverUrl(jsonObject.getString(Movie.COVER_API))
+                                .name(jsonObject.getString(Movie.TITLE_API))
+                                .build();
 
                         movies.add(movie);
 
