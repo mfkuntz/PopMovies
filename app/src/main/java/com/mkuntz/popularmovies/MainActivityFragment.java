@@ -1,6 +1,7 @@
 package com.mkuntz.popularmovies;
 
 import android.content.AsyncTaskLoader;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -46,7 +47,10 @@ public class MainActivityFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Movie m = (Movie) parent.getItemAtPosition(position);
 
-                Toast.makeText(getActivity(), m.getName(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(), DetailActivity.class)
+                        .putExtra(DetailActivityFragment.MOVIE_KEY, m.getId());
+
+                startActivity(intent);
             }
         });
 
