@@ -36,12 +36,7 @@ public class Discover {
 
                         JSONObject jsonObject = (JSONObject) resultArray.get(i);
 
-                        Movie movie = new Movie.Builder(jsonObject.getInt(Movie.ID_API))
-                                .coverUrl(jsonObject.getString(Movie.COVER_API))
-                                .name(jsonObject.getString(Movie.TITLE_API))
-                                .build();
-
-                        movies.add(movie);
+                        movies.add(new Movie(jsonObject));
 
                     }
 

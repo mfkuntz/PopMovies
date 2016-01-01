@@ -19,10 +19,6 @@ public class ApiAccess {
 
     static final String BASE_URL = "http://api.themoviedb.org/3";
 
-    static final String API_KEY_FORMAT = "?api_key=%1$s";
-
-
-
     public static void Get(String url, Context context, final ApiCallback apiCallback) {
 
 

@@ -1,5 +1,8 @@
 package com.mkuntz.popularmovies.datamodel;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by mkuntz on 9/21/15.
  */
@@ -16,6 +19,12 @@ public class Movie {
         id = b.id;
         name = b.name;
         coverUrl = b.coverUrl;
+    }
+
+    public Movie(JSONObject json) throws JSONException {
+        id = json.getInt(ID_API);
+        coverUrl = json.getString(COVER_API);
+        name = json.getString(TITLE_API);
     }
 
     private String coverUrl;
