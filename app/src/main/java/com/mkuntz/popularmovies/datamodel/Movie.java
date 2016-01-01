@@ -34,12 +34,9 @@ public class Movie {
     public String getCoverUrl() {
         return BASE_URL + SIZE + coverUrl;
     }
-
     public String getName() {
         return name;
     }
-
-
     public int getId() {
         return id;
     }

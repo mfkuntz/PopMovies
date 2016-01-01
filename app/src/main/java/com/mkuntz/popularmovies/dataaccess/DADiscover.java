@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by mkuntz on 9/21/15.
  */
-public class Discover {
+public class DADiscover {
 
     static final String DISCOVER_URL = "discover/movie";
 

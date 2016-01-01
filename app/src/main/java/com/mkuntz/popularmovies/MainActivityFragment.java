@@ -1,20 +1,15 @@
 package com.mkuntz.popularmovies;
 
-import android.content.AsyncTaskLoader;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import com.mkuntz.popularmovies.dataaccess.Discover;
+import com.mkuntz.popularmovies.dataaccess.DADiscover;
 import com.mkuntz.popularmovies.datamodel.Movie;
 
 import java.util.ArrayList;
@@ -60,7 +55,7 @@ public class MainActivityFragment extends Fragment {
     }
 
     private void loadData(){
-        Discover.Discover(getActivity(), new Discover.MovieCallback() {
+        DADiscover.Discover(getActivity(), new DADiscover.MovieCallback() {
             @Override
             public void onSuccess(ArrayList<Movie> movies) {
                 mCoverAdapter.addAll(movies);
@@ -76,15 +71,15 @@ public class MainActivityFragment extends Fragment {
 
 
 
-//    class DiscoverTask extends AsyncTask<Void, Void, ArrayList<Movie>>{
+//    class DiscoverTask extends AsyncTask<Void, Void, ArrayList<DAMovie>>{
 //
 //        @Override
-//        protected ArrayList<Movie> doInBackground(Void... params) {
-//            return Discover.Discover(getActivity());
+//        protected ArrayList<DAMovie> doInBackground(Void... params) {
+//            return DADiscover.DADiscover(getActivity());
 //        }
 //
 //        @Override
-//        protected void onPostExecute(ArrayList<Movie> movies) {
+//        protected void onPostExecute(ArrayList<DAMovie> movies) {
 //            mCoverAdapter.addAll(movies);
 //        }
 //    }

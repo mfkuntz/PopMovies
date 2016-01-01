@@ -29,6 +29,12 @@ public class ApiAccess {
                 .build();
 
 
+        doRequest(context, uri, apiCallback);
+
+
+    }
+
+    private static void doRequest(Context context, Uri uri, final ApiCallback apiCallback){
         StringRequest request = new StringRequest(Request.Method.GET, uri.toString(),
                 new Response.Listener<String>() {
                     @Override
@@ -46,8 +52,6 @@ public class ApiAccess {
 
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(request);
-
-
     }
 
 
@@ -55,5 +59,7 @@ public class ApiAccess {
     public interface ApiCallback {
         void onSuccess(String jsonString);
     }
+
+
 
 }

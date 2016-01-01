@@ -8,11 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mkuntz.popularmovies.dataaccess.Discover;
+import com.mkuntz.popularmovies.dataaccess.DAMovie;
 import com.mkuntz.popularmovies.datamodel.Movie;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -23,7 +21,7 @@ public class DetailActivityFragment extends Fragment {
 
     ViewHolder viewHolder;
 
-    int moviewId;
+    int movieId;
 
     public DetailActivityFragment() {
     }
@@ -32,19 +30,15 @@ public class DetailActivityFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        moviewId = getActivity().getIntent().getIntExtra(MOVIE_KEY, 0);
+        movieId = getActivity().getIntent().getIntExtra(MOVIE_KEY, 0);
     }
 
     private void loadData(){
-        Discover.Discover(getActivity(), new Discover.MovieCallback() {
+        DAMovie.Get(getActivity(), movieId, new DAMovie.MovieCallback() {
             @Override
-            public void onSuccess(ArrayList<Movie> movies) {
+            public void onSuccess(Movie movie) {
 
-                for (int i = 0; i < movies.size(); i++){
-                    if (movies.get(i).getId() == moviewId){
-                        buildView(movies.get(i));
-                    }
-                }
+                buildView(movie);
 
             }
 
