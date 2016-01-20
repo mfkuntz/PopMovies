@@ -44,7 +44,7 @@ public class DAMovie {
     }
 
     public interface MovieCallback {
-        void onSuccess(com.mkuntz.popularmovies.datamodel.Movie movie);
+        void onSuccess(Movie movie);
         void onError();
     }
 

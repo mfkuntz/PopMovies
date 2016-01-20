@@ -24,27 +24,27 @@ public class CoverAdapter extends ArrayAdapter<Movie> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+        CoverViewHolder coverViewHolder;
         if (convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.cover_list_item, parent, false);
-            viewHolder = new ViewHolder();
+            coverViewHolder = new CoverViewHolder();
 
-            viewHolder.CoverImage = (ImageView) convertView.findViewById(R.id.cover_image);
-            convertView.setTag(viewHolder);
+            coverViewHolder.CoverImage = (ImageView) convertView.findViewById(R.id.cover_image);
+            convertView.setTag(coverViewHolder);
 
         }else{
-            viewHolder = (ViewHolder) convertView.getTag();
+            coverViewHolder = (CoverViewHolder) convertView.getTag();
         }
 
         Movie movie = getItem(position);
 
 
-        Picasso.with(getContext()).load(movie.getCoverUrl()).into(viewHolder.CoverImage);
+        Picasso.with(getContext()).load(movie.getCoverUrl()).into(coverViewHolder.CoverImage);
 
         return convertView;
     }
 
-    private static class ViewHolder{
+    private static class CoverViewHolder {
         ImageView CoverImage;
     }
 }

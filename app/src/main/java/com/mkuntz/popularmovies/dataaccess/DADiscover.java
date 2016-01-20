@@ -32,7 +32,7 @@ public class DADiscover {
 
                     JSONArray resultArray = jsonRoot.getJSONArray("results");
 
-                    for (int i = 0; i < 12; i++) {
+                    for (int i = 0; i < resultArray.length() ; i++) {
 
                         JSONObject jsonObject = (JSONObject) resultArray.get(i);
 
